@@ -80,6 +80,60 @@ struct linked_list{
     int delete_last(){
         node* myPtr;
 
-        *myPtr = &tail;
+        *myPtr = *tail;
+
+        return 0;
+    }
+
+
+    void show_list(){
+        node* current = new node();
+
+        current = head;
+
+        if(head == NULL){
+            std::cout << "No elements on the list" << std::endl;
+        }
+
+        else{
+            for( int i = 0; i < size; i++){
+                std :: string s = std::to_string(current->get_data());
+                std::cout << s << std::endl;
+                if((size - i) > 1){
+                    *current = current->get_next();
+                }   
+            }
+        }
+
 
     }
+
+     void show_size(){
+        std::string s = std::to_string(size);
+        std::cout << size;
+    }
+};   
+
+static void PrintMemoryUsage(){
+    std::cout << "Mmemory Usage " << s_AllocationMetrics.CurrentUsage() << " bytes\n";
+}
+
+int main(){
+
+    PrintMemoryUsage();
+    
+    linked_list* list = new linked_list();
+
+    PrintMemoryUsage();
+
+    list->add_value(50);
+
+    //list->show_list();
+
+    PrintMemoryUsage();
+    
+    delete list;
+
+    PrintMemoryUsage();
+    
+}
