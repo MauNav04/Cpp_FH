@@ -49,3 +49,37 @@ struct node{
     node get_next(){return *next;}
 
 };
+
+
+struct linked_list{
+    node *head, *tail;
+    int size;
+
+    linked_list(){
+        head = nullptr;
+        tail = nullptr;
+        size = 0;
+    }
+
+    void add_value(int value){
+        node* tmp = new node(value);
+
+        if(head == NULL){
+            head = tmp;
+            tail = tmp;
+            size += 1;
+        }
+
+        else{
+            tail->set_next(tmp);
+            tail = tmp;
+            size += 1;
+        }
+    }
+
+    int delete_last(){
+        node* myPtr;
+
+        *myPtr = &tail;
+
+    }
